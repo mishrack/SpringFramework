@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+           
+    <bean id="alien" class="com.ck.beanfactory.Alien" autowire="byType">
+    
+    	<!-- autowire can have two type 1.byName 2.byType  -->
+    	<!-- byName will search bean by id name, byType will search by type of object -->
+    	<!--  In byName it will pick by name which is unique for each class object -->
+    	<!-- But in case of byType , if we have 2 or more objects of same type then we will get RE: -->
+    	<!-- RE:  org.springframework.beans.factory.NoUniqueBeanDefinitionException -->
+    	<!-- This situation can be avoided by assigning one  of the bean as primary="true" -->
+    
+    	<!-- <property name="age" value="20"></property> -->
+    	<!-- using constructor injection --> 
+    	<constructor-arg value="20"></constructor-arg>
+    	
+    	<!-- the reference passed should be declared in a separate bean -->
+    	<!-- Now if we do not want to use property tag in bean for reference type , 
+    	we can simply use autowire in bean tag -->
+    	<!--<property name="comp" ref="desktop"></property>  -->
+    </bean>
+    
+   <bean id="laptop" class="com.ck.beanfactory.Laptop" primary="true">
+    </bean>
+    
+    <bean id="desktop" class="com.ck.beanfactory.Desktop">
+    </bean>
+        
+</beans>
