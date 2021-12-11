@@ -1,2 +1,2 @@
 # SpringFramework
-Spring Framework 5 Introduction with SPring Boot
+Spring Framework 5 Introduction with Spring Boot
